@@ -16,6 +16,7 @@ var icecreamshop;
             icecreamshop.crc2.strokeRect(0, 0, 130, 200);
             icecreamshop.crc2.restore();
         }
+        // clicked?
         clickBox(_clickPoint) {
             if ((_clickPoint.x >= this.position.x && _clickPoint.x <= 130 + this.position.x) && (_clickPoint.y >= this.position.y && _clickPoint.y <= 200 + this.position.y)) {
                 icecreamshop.makeIceFlavor(this.myOffer.color, this.myOffer.price);

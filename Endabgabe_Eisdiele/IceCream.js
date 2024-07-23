@@ -15,6 +15,7 @@ var icecreamshop;
             this.sauceChosen = false;
             this.toppingChosen = false;
         }
+        // where shown? in bubble or at bottom?
         where(_there) {
             switch (_there) {
                 case icecreamshop.iceWhere.bottom:
@@ -29,6 +30,7 @@ var icecreamshop;
                     break;
             }
         }
+        // + scoops
         moreScoops(_scoopNumber, _desire) {
             if (_scoopNumber < 1 || _scoopNumber > 3) {
                 return;
@@ -45,6 +47,7 @@ var icecreamshop;
         draw(_scale) {
             icecreamshop.crc2.save();
             icecreamshop.crc2.translate(this.position.x, this.position.y);
+            // 1 scoop
             if (this.nScoops == 1) {
                 icecreamshop.crc2.strokeStyle = "rgb(0, 0, 0)";
                 icecreamshop.crc2.fillStyle = "" + this.chosenTaste[0] + "";
@@ -52,6 +55,7 @@ var icecreamshop;
                 icecreamshop.crc2.beginPath();
                 scoop.arc(0, -5 * _scale, 39 * _scale, 0, 2 * Math.PI);
                 icecreamshop.crc2.fill(scoop);
+                // sauce + topping for bottom (needed to be adjusted)
                 if (this.here == icecreamshop.iceWhere.bottom) {
                     if (this.sauceChosen == true) {
                         this.drawSauce(1.9, -185, -93);
@@ -59,6 +63,7 @@ var icecreamshop;
                     if (this.toppingChosen == true) {
                         this.drawTopping(1.4, -196, -88);
                     }
+                    // sauce + topping for Bubble (needed to be adjusted, differently)
                 }
                 else if (this.here == icecreamshop.iceWhere.inBubble) {
                     this.drawSauce(1.9 * _scale, -68, -35);
@@ -66,12 +71,12 @@ var icecreamshop;
                 }
             }
             else if (this.nScoops == 2) {
+                // 2 scoops
                 icecreamshop.crc2.strokeStyle = "rgb(0, 0, 0)";
                 icecreamshop.crc2.fillStyle = "" + this.chosenTaste[0] + "";
                 let scoop = new Path2D();
                 icecreamshop.crc2.beginPath();
                 scoop.arc(-10 * _scale, -5 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop);
                 icecreamshop.crc2.fill(scoop);
                 if (this.here == icecreamshop.iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -91,7 +96,6 @@ var icecreamshop;
                 icecreamshop.crc2.beginPath();
                 scoop2.moveTo(5 * _scale, -5 * _scale);
                 scoop2.arc(10 * _scale, -5 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop2);
                 icecreamshop.crc2.fill(scoop2);
                 if (this.here == icecreamshop.iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -107,13 +111,13 @@ var icecreamshop;
                 }
             }
             else if (this.nScoops == 3) {
+                // 3 scoops
                 icecreamshop.crc2.strokeStyle = "rgb(0, 0, 0)";
                 icecreamshop.crc2.fillStyle = "" + this.chosenTaste[2] + "";
                 let scoop3 = new Path2D();
                 icecreamshop.crc2.beginPath();
                 scoop3.moveTo(0, -33 * _scale);
                 scoop3.arc(0, -33 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop3);
                 icecreamshop.crc2.fill(scoop3);
                 if (this.here == icecreamshop.iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -133,7 +137,6 @@ var icecreamshop;
                 icecreamshop.crc2.beginPath();
                 scoop.moveTo(-15 * _scale, -10 * _scale);
                 scoop.arc(-15 * _scale, -10 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop);
                 icecreamshop.crc2.fill(scoop);
                 if (this.here == icecreamshop.iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -153,7 +156,6 @@ var icecreamshop;
                 icecreamshop.crc2.beginPath();
                 scoop2.moveTo(15 * _scale, -10 * _scale);
                 scoop2.arc(15 * _scale, -10 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop2);
                 icecreamshop.crc2.fill(scoop2);
                 if (this.here == icecreamshop.iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -179,10 +181,10 @@ var icecreamshop;
             scone.lineTo(0, 120 * _scale);
             scone.lineTo(-40 * _scale, 0);
             scone.lineTo(40 * _scale, 0);
-            // crc2.stroke(scone);
             icecreamshop.crc2.fill(scone);
             icecreamshop.crc2.restore();
         }
+        // extra because length
         drawSauce(_scale, _x, _y) {
             icecreamshop.crc2.save();
             icecreamshop.crc2.translate(_x, _y);
@@ -254,6 +256,7 @@ var icecreamshop;
             icecreamshop.crc2.fill(sauce);
             icecreamshop.crc2.restore();
         }
+        // extra because length
         drawTopping(_scale, _x, _y) {
             icecreamshop.crc2.save();
             icecreamshop.crc2.translate(_x, _y);

@@ -16,6 +16,7 @@ namespace icecreamshop {
             this.toppingChosen = false;
         }
 
+        // where shown? in bubble or at bottom?
         where(_there: iceWhere): void {
             switch (_there) {
                 case iceWhere.bottom:
@@ -31,6 +32,7 @@ namespace icecreamshop {
             }
         }
 
+        // + scoops
         moreScoops(_scoopNumber: number, _desire: String[]): void {
             if (_scoopNumber < 1 || _scoopNumber > 3) {
                 return;
@@ -51,6 +53,7 @@ namespace icecreamshop {
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
 
+            // 1 scoop
             if (this.nScoops == 1) {
                 crc2.strokeStyle = "rgb(0, 0, 0)";
                 crc2.fillStyle = "" + this.chosenTaste[0] + "";
@@ -59,6 +62,7 @@ namespace icecreamshop {
                 scoop.arc(0, -5 * _scale, 39 * _scale, 0, 2 * Math.PI);
                 crc2.fill(scoop);
                 
+                // sauce + topping for bottom (needed to be adjusted)
                 if (this.here == iceWhere.bottom) {
                     if (this.sauceChosen == true) {
                         this.drawSauce(1.9, -185, -93);
@@ -66,17 +70,18 @@ namespace icecreamshop {
                     if (this.toppingChosen == true) {
                         this.drawTopping(1.4, -196, -88);
                     }
+                // sauce + topping for Bubble (needed to be adjusted, differently)
                 } else if (this.here == iceWhere.inBubble) {
                         this.drawSauce(1.9 * _scale, -68, -35);
                         this.drawTopping(2.3 * _scale, -73, -33);
                 }
             } else if (this.nScoops == 2) {
+            // 2 scoops
                 crc2.strokeStyle = "rgb(0, 0, 0)";
                 crc2.fillStyle = "" + this.chosenTaste[0] + "";
                 let scoop: Path2D = new Path2D();
                 crc2.beginPath();
                 scoop.arc(-10 * _scale, -5 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop);
                 crc2.fill(scoop);
                 if (this.here == iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -96,7 +101,6 @@ namespace icecreamshop {
                 crc2.beginPath();
                 scoop2.moveTo(5 * _scale, -5 * _scale);
                 scoop2.arc(10 * _scale, -5 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop2);
                 crc2.fill(scoop2);
                 if (this.here == iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -110,13 +114,13 @@ namespace icecreamshop {
                         this.drawTopping(2 * _scale, -51, -25);
                 }
             } else if (this.nScoops == 3) {
+            // 3 scoops
                 crc2.strokeStyle = "rgb(0, 0, 0)";
                 crc2.fillStyle = "" + this.chosenTaste[2] + "";
                 let scoop3: Path2D = new Path2D();
                 crc2.beginPath();
                 scoop3.moveTo(0, -33 * _scale);
                 scoop3.arc(0, -33 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop3);
                 crc2.fill(scoop3);
                 if (this.here == iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -136,7 +140,6 @@ namespace icecreamshop {
                 crc2.beginPath();
                 scoop.moveTo(-15 * _scale, -10 * _scale);
                 scoop.arc(-15 * _scale, -10 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop);
                 crc2.fill(scoop);
                 if (this.here == iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -156,7 +159,6 @@ namespace icecreamshop {
                 crc2.beginPath();
                 scoop2.moveTo(15 * _scale, -10 * _scale);
                 scoop2.arc(15 * _scale, -10 * _scale, 29 * _scale, 0, 2 * Math.PI);
-                // crc2.stroke(scoop2);
                 crc2.fill(scoop2);
                 if (this.here == iceWhere.bottom) {
                     if (this.sauceChosen == true) {
@@ -183,12 +185,12 @@ namespace icecreamshop {
             scone.lineTo(0, 120 * _scale);
             scone.lineTo(-40 * _scale, 0);
             scone.lineTo(40 * _scale, 0);
-            // crc2.stroke(scone);
             crc2.fill(scone);
 
             crc2.restore();
         }
 
+        // extra because length
         private drawSauce(_scale: number, _x: number, _y: number): void {
             crc2.save();
             crc2.translate(_x, _y);
@@ -263,6 +265,7 @@ namespace icecreamshop {
             crc2.restore();
         }
 
+        // extra because length
         private drawTopping(_scale: number, _x: number, _y: number): void {
             crc2.save();
             crc2.translate(_x, _y);

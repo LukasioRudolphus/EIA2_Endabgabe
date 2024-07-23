@@ -19,6 +19,7 @@ namespace icecreamshop {
             crc2.restore();
         }
 
+        // clicked?
         clickBox(_clickPoint: Vector): void {
             if ((_clickPoint.x >= this.position.x && _clickPoint.x <= 130 + this.position.x) && (_clickPoint.y >= this.position.y && _clickPoint.y <= 200 + this.position.y)) {
                 makeIceFlavor(this.myOffer.color, this.myOffer.price);

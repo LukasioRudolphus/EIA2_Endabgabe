@@ -9,6 +9,7 @@ var icecreamshop;
             this.position = new icecreamshop.Vector(_x, icecreamshop.crc2.canvas.height - 250);
             this.myOffer = _myTaste;
         }
+        // clicked?
         clickBox(_clickPoint) {
         }
         draw() {

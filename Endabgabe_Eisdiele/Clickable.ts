@@ -9,6 +9,7 @@ namespace icecreamshop {
             this.myOffer = _myTaste;
         }
 
+        // clicked?
         protected clickBox(_clickPoint: Vector): void {
         
         }
